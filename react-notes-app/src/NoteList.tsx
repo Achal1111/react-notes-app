@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { Button, Col, Row, Stack, Form, Card } from "react-bootstrap";
+import { Button, Col, Row, Stack, Form, Card, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ReactSelect from "react-select";
 import {  Tag } from "./App";
@@ -100,7 +100,12 @@ function NoteCard({id,title,tags}:SimplifiedNote) {
     return (
         <Card as={Link} to={`/${id}`} className={`h-100 text-reset text-decoration-none ${styles.card}`}>
             <Card.Body>
-
+            <Stack gap={2} className="align-items-center justify-content-center h-100">
+                <span className="fs-5">{title}</span>
+                {tags.map(tag=>(
+                    <Badge key={tag.id} className="text-truncate">{tag.label}</Badge>
+                ))}
+            </Stack>
             </Card.Body>
         </Card>
     )
